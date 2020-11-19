@@ -17,7 +17,7 @@ public class Application {
 
 		getNumberOfThreads();
 		showMsgStartProcessing();
-		
+
 		totalTimeInMs = benchmark.execute(new CalSecondDegreeEquation(this.numberToLoop, this.numberOfThreads));
 
 		showResults();
@@ -25,16 +25,19 @@ public class Application {
 
 	private void getNumberOfThreads() {
 		try (Scanner input = new Scanner(System.in)) {
-			System.out.println(String.format("Informe o número de thread para executar (segerido = %d, cores no processador.): ", this.numberOfCpuCores));
-			
+			System.out.println(String.format(
+					"Informe o número de thread para executar (segerido = %d, cores/núcleos no processador.): ",
+					this.numberOfCpuCores));
+
 			this.numberOfThreads = input.nextInt();
 		}
 	}
-	
+
 	private void showMsgStartProcessing() {
-		System.out.println(String.format("Processando: %d repetições com %d threads, aguarde...", this.numberToLoop, this.numberOfThreads));
+		System.out.println(String.format("Processando: %d repetições com %d threads, aguarde...", this.numberToLoop,
+				this.numberOfThreads));
 	}
-	
+
 	public void showResults() {
 		System.out.println(String.format("Tempo total: %d", this.totalTimeInMs));
 	}

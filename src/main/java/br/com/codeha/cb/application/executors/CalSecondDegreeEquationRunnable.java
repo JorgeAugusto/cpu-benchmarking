@@ -9,12 +9,13 @@ public class CalSecondDegreeEquationRunnable implements Runnable {
 	private static Random random = new Random(System.currentTimeMillis());
 	private int limit = 0;
 
-	public CalSecondDegreeEquationRunnable(long numberToLoop, long idThread, CalSecondDegreeEquation calSecondDegreeEquation) {
+	public CalSecondDegreeEquationRunnable(long numberToLoop, long idThread,
+			CalSecondDegreeEquation calSecondDegreeEquation) {
 		final int LIMIT_OF_LIMIT = 100;
-		
+
 		this.numberToLoop = numberToLoop;
 		this.calSecondDegreeEquation = calSecondDegreeEquation;
-		
+
 		random.setSeed(System.currentTimeMillis());
 		limit = 1 + random.nextInt(LIMIT_OF_LIMIT);
 	}
@@ -23,8 +24,7 @@ public class CalSecondDegreeEquationRunnable implements Runnable {
 	public void run() {
 		for (long i = 0; i < this.numberToLoop; i++) {
 			precessStep(i);
-			
-			simulatedDelay();
+			// simulatedDelay();
 		}
 
 		// notify the end of thread
@@ -58,10 +58,11 @@ public class CalSecondDegreeEquationRunnable implements Runnable {
 			}
 		}
 	}
-	
+
+	@SuppressWarnings("unused")
 	private void simulatedDelay() {
 		final long MS_TO_SLEEPING = 1000;
-		
+
 		try {
 			Thread.sleep(MS_TO_SLEEPING);
 		} catch (InterruptedException e) {
