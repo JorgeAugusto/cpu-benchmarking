@@ -39,6 +39,6 @@ public class Application {
 	}
 
 	public void showResults() {
-		System.out.println(String.format("Tempo total: %dms", this.totalTimeInMs));
+		System.out.println(String.format("Tempo total: %d(ms)", this.totalTimeInMs));
 	}
 }
