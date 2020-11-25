@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: jorge
+Built-By: Fatiane Santos
 Build-Jdk: 15
 Main-Class: br.com.codeha.cb.main.Main
 Created-By: Maven Integration for Eclipse

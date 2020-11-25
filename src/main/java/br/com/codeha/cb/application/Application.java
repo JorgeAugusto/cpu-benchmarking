@@ -7,7 +7,7 @@ import br.com.codeha.cb.application.interfaces.Benchmark;
 
 public class Application {
 
-	private long numberToLoop = 50_000_000L;
+	private long numberToLoop = 12L;
 	private int numberOfCpuCores = Runtime.getRuntime().availableProcessors();;
 	private int numberOfThreads = numberOfCpuCores;
 	private long totalTimeInMs = 0L;

@@ -8,9 +8,10 @@ public class CalSecondDegreeEquationRunnable implements Runnable {
 	private CalSecondDegreeEquation calSecondDegreeEquation;
 	private static Random random = new Random(System.currentTimeMillis());
 	private int limit = 0;
+	private long idThread;
 
-	public CalSecondDegreeEquationRunnable(long numberToLoop, long idThread,
-			CalSecondDegreeEquation calSecondDegreeEquation) {
+	public CalSecondDegreeEquationRunnable(long numberToLoop, long idThread, CalSecondDegreeEquation calSecondDegreeEquation) {
+		this.idThread = idThread;
 		final int LIMIT_OF_LIMIT = 100;
 
 		this.numberToLoop = numberToLoop;
@@ -22,15 +23,13 @@ public class CalSecondDegreeEquationRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		for (long i = 0; i < this.numberToLoop; i++) {
-			precessStep(i);
-			// simulatedDelay();
-		}
-
-		// notify the end of thread
-		synchronized (this.calSecondDegreeEquation) {
-			this.calSecondDegreeEquation.incTotalClosed();
-			this.calSecondDegreeEquation.notifyAll();
+		try {
+			for (long i = 0; i < this.numberToLoop; i++) {
+				precessStep(i);
+				simulatedDelay();
+			}
+		} finally {
+			System.out.println("Fim da thread: " + this.idThread);
 		}
 	}
 

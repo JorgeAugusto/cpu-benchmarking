@@ -20,25 +20,14 @@ public class CalSecondDegreeEquation implements Calculator {
 		for (long i = 0; i < this.numberOfThreads; i++) {
 			createNewThread(i);
 		}
-
-		waitForSynchronizedToEnd();
 	}
 
 	private void createNewThread(long i) {
 		Thread thread = new Thread(new CalSecondDegreeEquationRunnable(numberToLoop, i + 1, this));
-		thread.start();
-	}
-
-	private void waitForSynchronizedToEnd() {
-		synchronized (this) {
-			try {
-				while (this.totalClosed < this.numberOfThreads) {
-					wait();
-				}
-			} catch (InterruptedException e) {
-
-			}
-		}
+		try {
+			thread.start();
+			thread.join();
+		} catch (InterruptedException e) { }
 	}
 
 	public synchronized void incTotalClosed() {
